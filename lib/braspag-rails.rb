@@ -1,2 +1,0 @@
-module Braspag-rails
-end
