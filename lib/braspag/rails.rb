@@ -1,3 +1,5 @@
+require 'action_view'
+
 module Braspag
   module Rails
     module FormHelper
@@ -11,7 +13,7 @@ module Braspag
           html.concat '</p>'
         end
       end
-      def braspag_info_form_for(route)
+      def braspag_edit_form_for(route)
         form_tag route do
           template = ERB.new <<-EOF
             <%= label_tag 'Numero do Pedido' %>
