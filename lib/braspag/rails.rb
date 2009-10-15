@@ -1,5 +1,3 @@
-require 'action_view'
-
 module Braspag
   module Rails
     module FormHelper

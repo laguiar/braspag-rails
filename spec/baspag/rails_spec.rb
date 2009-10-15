@@ -1,4 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require 'action_view'
+require 'action_controller'
 
 describe Braspag::Rails::FormHelper do
   include ActionView::Helpers::FormHelper
@@ -7,13 +9,15 @@ describe Braspag::Rails::FormHelper do
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::CaptureHelper
   include ActionController::PolymorphicRoutes
+  include ActionController::RequestForgeryProtection
+  include ActionController::ActionControllerError
 
  # include ActionView::Helpers::FormOptionsHelper
-  #include ActionView::Helpers::TextHelper
-  #include ActionView::Helpers::ActiveRecordHelper
-  #include ActionView::Helpers::RecordIdentificationHelper
-#  include ActionView::Helpers::DateHelper
-  include ActiveSupport
+ # include ActionView::Helpers::TextHelper
+ # include ActionView::Helpers::ActiveRecordHelper
+ # include ActionView::Helpers::RecordIdentificationHelper
+ # include ActionView::Helpers::DateHelper
+ # include ActiveSupport
 
 
   include Braspag::Rails::FormHelper
@@ -23,7 +27,7 @@ describe Braspag::Rails::FormHelper do
     @output_buffer = ''
   end
 
-  it "should render a form to order" do
+  it "should render a form with required fields" do
     braspag_edit_form_for('/payment_types') do |builder|
     end
     output_buffer.should have_tag("input#nome")
