@@ -2,15 +2,19 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 require 'action_view'
 require 'action_controller'
 
+module ActionController
+  class ActionControllerError < StandardError #:nodoc:
+  end
+end
+
 describe Braspag::Rails::FormHelper do
-  include ActionView::Helpers::FormHelper
-  include ActionView::Helpers::FormTagHelper
-  include ActionView::Helpers::UrlHelper
-  include ActionView::Helpers::TagHelper
-  include ActionView::Helpers::CaptureHelper
-  include ActionController::PolymorphicRoutes
-  include ActionController::RequestForgeryProtection
-  include ActionController::ActionControllerError
+#  include ActionView::Helpers::FormHelper
+#  include ActionView::Helpers::FormTagHelper
+#  include ActionView::Helpers::UrlHelper
+#  include ActionView::Helpers::TagHelper
+#  include ActionView::Helpers::CaptureHelper
+#  include ActionController::PolymorphicRoutes
+#  include ActionController::RequestForgeryProtection
 
  # include ActionView::Helpers::FormOptionsHelper
  # include ActionView::Helpers::TextHelper
@@ -18,7 +22,24 @@ describe Braspag::Rails::FormHelper do
  # include ActionView::Helpers::RecordIdentificationHelper
  # include ActionView::Helpers::DateHelper
  # include ActiveSupport
+  def allow_forgery_protection
+    false
+  end
 
+  include ActionController::PolymorphicRoutes
+  include ActionController::Helpers
+  include ActionController::RequestForgeryProtection
+  include ActionView::Helpers::FormHelper
+  include ActionView::Helpers::FormTagHelper
+  include ActionView::Helpers::FormOptionsHelper
+  include ActionView::Helpers::UrlHelper
+  include ActionView::Helpers::TagHelper
+  include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::ActiveRecordHelper
+  include ActionView::Helpers::RecordIdentificationHelper
+  include ActionView::Helpers::DateHelper
+  include ActionView::Helpers::CaptureHelper
+  include ActiveSupport
 
   include Braspag::Rails::FormHelper
 
@@ -30,7 +51,7 @@ describe Braspag::Rails::FormHelper do
   it "should render a form with required fields" do
     braspag_edit_form_for('/payment_types') do |builder|
     end
-    output_buffer.should have_tag("input#nome")
+    output_buffer.should have_tag("input#NOME")
   end
 
   it "should render a form to buyer" do
