@@ -17,11 +17,7 @@ module Braspag
       end
       def braspag_edit_form_for(route)
         form_tag route do
-          render :partial => "order"
-          render :partial => "buyer"
-          render :partial => "destiny"
-          render :partial => "payment"
-          render :partial => "next"
+          render :partial => "all"
        end
       end
     end
