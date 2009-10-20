@@ -8,27 +8,6 @@ module ActionController
 end
 
 describe Braspag::Rails::FormHelper do
-#  include ActionView::Helpers::FormHelper
-#  include ActionView::Helpers::FormTagHelper
-#  include ActionView::Helpers::UrlHelper
-#  include ActionView::Helpers::TagHelper
-#  include ActionView::Helpers::CaptureHelper
-#  include ActionController::PolymorphicRoutes
-#  include ActionController::RequestForgeryProtection
-
- # include ActionView::Helpers::FormOptionsHelper
- # include ActionView::Helpers::TextHelper
- # include ActionView::Helpers::ActiveRecordHelper
- # include ActionView::Helpers::RecordIdentificationHelper
- # include ActionView::Helpers::DateHelper
- # include ActiveSupport
-  def allow_forgery_protection
-    false
-  end
-
-  include ActionController::PolymorphicRoutes
-  include ActionController::Helpers
-  include ActionController::RequestForgeryProtection
   include ActionView::Helpers::FormHelper
   include ActionView::Helpers::FormTagHelper
   include ActionView::Helpers::FormOptionsHelper
@@ -39,9 +18,16 @@ describe Braspag::Rails::FormHelper do
   include ActionView::Helpers::RecordIdentificationHelper
   include ActionView::Helpers::DateHelper
   include ActionView::Helpers::CaptureHelper
+  include ActionController::PolymorphicRoutes
+  include ActionController::Helpers
+  include ActionController::RequestForgeryProtection
   include ActiveSupport
 
   include Braspag::Rails::FormHelper
+
+  def allow_forgery_protection
+    false
+  end
 
   attr_accessor :output_buffer
   before do
@@ -51,14 +37,9 @@ describe Braspag::Rails::FormHelper do
   it "should render a form with required fields" do
     braspag_edit_form_for('/payment_types') do |builder|
     end
+    output_buffer.should have_tag("input#VENDAID")
+    output_buffer.should have_tag("input#VALOR")
     output_buffer.should have_tag("input#NOME")
-  end
-
-  it "should render a form to buyer" do
-
-  end
-
-  it "should render a form to delivery information" do
-
+    output_buffer.should have_tag("input#CODPAGAMENTO")
   end
 end
