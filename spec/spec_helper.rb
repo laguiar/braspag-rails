@@ -4,3 +4,8 @@ require 'rubygems'
 require 'braspag/rails'
 require 'spec'
 require 'ruby-debug'
+
+require 'rspec_hpricot_matchers'
+Spec::Runner.configure do |config|
+  config.include(RspecHpricotMatchers)
+end
