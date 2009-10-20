@@ -2,13 +2,14 @@ module Braspag
   module Rails
     module Helpers
       def order_form
-        html = label_tag('Numero do Pedido')
-        html << text_field_tag('VENDAID')
-        html << "<br />"
-        html << label_tag('Valor Total')
-        html << text_field_tag('VALOR')
-        html << "<br /><br />"
-        html
+        html = <<-EOF
+          #{label_tag 'Numero do Pedido'}
+          #{text_field_tag('VENDAID')}
+          <br />
+          #{label_tag('Valor Total')}
+          #{text_field_tag('VALOR')}
+          <br /><br />
+        EOF
       end
 
       def buyer_form

@@ -17,17 +17,12 @@ module Braspag
       end
       def braspag_edit_form_for(route)
         form_tag route do
-          template = ERB.new <<-EOF
-            <%= order_form %>
-            <%= buyer_form %>
-            <%= destiny_form %>
-            <%= payment_form %>
-            <p>
-            <%= submit_tag 'Prosseguir' %>
-            </p>
-          EOF
-          template.result(binding)
-        end
+          render :partial => "order"
+          render :partial => "buyer"
+          render :partial => "destiny"
+          render :partial => "payment"
+          render :partial => "next"
+       end
       end
     end
   end
