@@ -5,7 +5,7 @@ require 'rake/gempackagetask'
 require 'spec/rake/spectask'
 
 GEM = "braspag-rails"
-GEM_VERSION = "0.1.2"
+GEM_VERSION = "0.1.3"
 SUMMARY = "Rails plugin to integrate your application with Braspag"
 AUTHOR = "Gonow"
 EMAIL = "labs@gonow.com.br"
