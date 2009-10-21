@@ -1,0 +1,23 @@
+<% form_tag '#{route}' do %>
+  <%= label_tag 'Numero do Pedido' %>
+  <%= text_field_tag 'VENDAID' %>
+
+  <br />
+
+  <%= label_tag 'Valor Total' %>
+  <%= text_field_tag 'VALOR' %>
+
+  <br />
+
+  <%= label_tag 'Nome do Comprador' %>
+  <%= text_field_tag 'NOME' %>
+
+  <%= yield %>
+
+  <%= label_tag 'Forma de Pagamento' %>
+  <%= text_field_tag 'CODPAGAMENTO' %>
+
+  <br />
+
+  <%= submit_tag 'Prosseguir' %>
+<% end %>
