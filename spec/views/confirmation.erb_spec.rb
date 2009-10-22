@@ -7,6 +7,10 @@ describe "_confirmation.erb" do
       @form = form_from_partial("confirmation")
     end
 
+    it "should include custom elements specified as a block" do
+      @form.should have_tag("input[@name='custom']")
+    end
+
     xit "should target https://homologacao.pagador.com.br/pagador/index.asp on test environment" do
       @form.should have_tag("form[@action='https://homologacao.pagador.com.br/pagador/index.asp']")
     end
