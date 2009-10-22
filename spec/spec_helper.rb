@@ -10,8 +10,11 @@ Spec::Runner.configure do |config|
   config.include(RspecHpricotMatchers)
 end
 
-def partial(name)
-  File.expand_path(File.dirname(__FILE__) + "/../app/views/braspag/_#{name}.erb")
+def form_from_partial(name)
+  file = File.expand_path(File.dirname(__FILE__) + "/../app/views/braspag/_#{name}.erb")
+  Tilt::ERBTemplate.new(file).render do
+    "<input name='custom'>"
+  end
 end
 
 require 'erb'

@@ -5,10 +5,9 @@ def braspag_path
 end
 
 describe "_form.erb" do
-
   context "on rendering a form" do
     before :all do
-      @form = Tilt::ERBTemplate.new(partial("form")).render {}
+      @form = form_from_partial("form")
     end
 
     it "should target braspag_path" do
@@ -22,9 +21,7 @@ describe "_form.erb" do
     end
 
     it "should include custom elements specified as a block" do
-      Tilt::ERBTemplate.new(partial("form")).render do
-        "<input name='custom'>"
-      end.should have_tag("input[@name='custom']")
+      @form.should have_tag("input[@name='custom']")
     end
   end
 end

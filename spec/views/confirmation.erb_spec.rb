@@ -4,7 +4,7 @@ describe "_confirmation.erb" do
 
   context "on rendering a form" do
     before :all do
-      @form = Tilt::ERBTemplate.new(partial("confirmation")).render {}
+      @form = form_from_partial("confirmation")
     end
 
     xit "should target https://homologacao.pagador.com.br/pagador/index.asp on test environment" do
