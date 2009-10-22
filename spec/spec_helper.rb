@@ -10,6 +10,10 @@ Spec::Runner.configure do |config|
   config.include(RspecHpricotMatchers)
 end
 
+def partial(name)
+  File.expand_path(File.dirname(__FILE__) + "/../app/views/braspag/_#{name}.erb")
+end
+
 require 'erb'
 require 'tilt'
 require 'action_view'

@@ -1,16 +1,18 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-def partial(name)
-  File.expand_path(File.dirname(__FILE__) + "/../../app/views/braspag/_#{name}.erb")
-end
+describe "_confirmation.erb" do
 
-describe "_confirmation.erb should render a form" do
+  context "on rendering a form" do
+    before :all do
+      @form = Tilt::ERBTemplate.new(partial("confirmation")).render {}
+    end
 
-  before :all do
-    @form = Tilt::ERBTemplate.new(partial("confirmation")).render {}
-  end
+    xit "should target https://homologacao.pagador.com.br/pagador/index.asp on test environment" do
+      @form.should have_tag("form[@action='https://homologacao.pagador.com.br/pagador/index.asp']")
+    end
 
-  it "targeting https://homologacao.pagador.com.br/pagador/index.asp" do
-    @form.should have_tag("form[@action='https://homologacao.pagador.com.br/pagador/index.asp']")
+    xit "should target https://homologacao.pagador.com.br/pagador/index.asp on development environment" do
+      @form.should have_tag("form[@action='https://homologacao.pagador.com.br/pagador/index.asp']")
+    end
   end
 end
