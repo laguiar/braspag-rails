@@ -20,5 +20,11 @@ describe "_form.erb" do
         @form.should have_tag("input[@name='#{field}']")
       end
     end
+
+    it "should include custom elements specified as a block" do
+      Tilt::ERBTemplate.new(partial("form")).render do
+        "<input name='custom'>"
+      end.should have_tag("input[@name='custom']")
+    end
   end
 end
