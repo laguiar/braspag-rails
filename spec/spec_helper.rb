@@ -10,9 +10,14 @@ Spec::Runner.configure do |config|
   config.include(RspecHpricotMatchers)
 end
 
+def merchant_id
+  "23r523f234f234f"
+end
+
 def form_from_partial(name)
+  @merchant_id = merchant_id
   file = File.expand_path(File.dirname(__FILE__) + "/../app/views/braspag/_#{name}.erb")
-  Tilt::ERBTemplate.new(file).render do
+  Tilt::ERBTemplate.new(file).render(self) do
     "<input name='custom'>"
   end
 end

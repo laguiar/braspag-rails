@@ -1,5 +1,5 @@
 <% form_tag 'https://homologacao.pagador.com.br/pagador/index.asp' do %>
- <%= hidden_field_tag 'Id_Loja', '#{ID}' %>
+ <%= hidden_field_tag 'Id_Loja', @merchant_id %>
  <%= hidden_field_tag 'crypt', '#{crypt}' %>
 
  <%= yield %>

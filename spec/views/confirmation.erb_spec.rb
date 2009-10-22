@@ -7,6 +7,10 @@ describe "_confirmation.erb" do
       @form = form_from_partial("confirmation")
     end
 
+    it "should include a Id_Loja field with the id of the merchant" do
+      @form.should have_tag("input[@type='hidden'][@name='Id_Loja'][@value='#{merchant_id}']")
+    end
+
     it "should include custom elements specified as a block" do
       @form.should have_tag("input[@name='custom']")
     end
