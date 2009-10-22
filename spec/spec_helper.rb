@@ -9,3 +9,22 @@ require 'rspec_hpricot_matchers'
 Spec::Runner.configure do |config|
   config.include(RspecHpricotMatchers)
 end
+
+require 'erb'
+require 'tilt'
+require 'action_view'
+include ActionView::Helpers::FormHelper
+include ActionView::Helpers::FormTagHelper
+include ActionView::Helpers::UrlHelper
+include ActionView::Helpers::TagHelper
+include ActionView::Helpers::TextHelper
+include ActionView::Helpers::RecordIdentificationHelper
+include ActionView::Helpers::DateHelper
+include ActionView::Helpers::CaptureHelper
+def output_buffer=(buffer)
+  @_out_buf = buffer
+end
+def output_buffer
+  @_out_buf
+end
+def protect_against_forgery?; end
