@@ -4,11 +4,17 @@ describe "_confirmation.erb" do
 
   context "on rendering a form" do
     before :all do
+      @merchant_id = "534g34g34g34"
+      @crypt = "j234ibn34jkgt34"
       @form = form_from_partial("confirmation")
     end
 
-    it "should include a Id_Loja field with the id of the merchant" do
-      @form.should have_tag("input[@type='hidden'][@name='Id_Loja'][@value='#{merchant_id}']")
+    it "should include a Id_Loja field with @merchant_id as the value" do
+      @form.should have_tag("input[@type='hidden'][@name='Id_Loja'][@value='#{@merchant_id}']")
+    end
+
+    it "should include a crypt field with the @crypt as the value" do
+      @form.should have_tag("input[@type='hidden'][@name='crypt'][@value='#{@crypt}']")
     end
 
     it "should include custom elements specified as a block" do
