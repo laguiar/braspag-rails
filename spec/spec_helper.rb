@@ -28,6 +28,7 @@ include ActionView::Helpers::TextHelper
 include ActionView::Helpers::RecordIdentificationHelper
 include ActionView::Helpers::DateHelper
 include ActionView::Helpers::CaptureHelper
+
 def output_buffer=(buffer)
   @_out_buf = buffer
 end
