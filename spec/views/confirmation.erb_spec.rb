@@ -4,13 +4,14 @@ describe "_confirmation.erb" do
 
   context "on rendering a form" do
     before :all do
-      @merchant_id = "534g34g34g34"
+      @store_id = "534g34g34g34"
+      @braspag = Braspag::Connection.new @store_id, "test"
       @crypt = "j234ibn34jkgt34"
       @form = form_from_partial("confirmation")
     end
 
     it "should include a Id_Loja field with @merchant_id as the value" do
-      @form.should have_tag("input[@type='hidden'][@name='Id_Loja'][@value='#{@merchant_id}']")
+      @form.should have_tag("input[@type='hidden'][@name='Id_Loja'][@value='#{@store_id}']")
     end
 
     it "should include a crypt field with the @crypt as the value" do
@@ -21,12 +22,13 @@ describe "_confirmation.erb" do
       @form.should have_tag("input[@name='custom']")
     end
 
-    xit "should target https://homologacao.pagador.com.br/pagador/index.asp on test environment" do
-      @form.should have_tag("form[@action='https://homologacao.pagador.com.br/pagador/index.asp']")
+    it "should target https://homologacao.pagador.com.br/pagador/index.asp on test environment" do
+      @form.should have_tag("form[@action='#{@braspag.base_url}/pagador/index.asp']")
     end
 
-    xit "should target https://homologacao.pagador.com.br/pagador/index.asp on development environment" do
-      @form.should have_tag("form[@action='https://homologacao.pagador.com.br/pagador/index.asp']")
+    it "should target https://www.pagador.com.br/pagador/index.asp on production environment" do
+      @braspag = Braspag::Connection.new @store_id, "production"
+      form_from_partial("confirmation").should have_tag("form[@action='#{@braspag.base_url}/pagador/index.asp']")
     end
   end
 end

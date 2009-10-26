@@ -1,7 +1,7 @@
 class BraspagController < ApplicationController
   def encrypt
-    c = Braspag::Connection.new "{84BE7E7F-698A-6C74-F820-AE359C2A07C2}", RAILS_ENV
-    cr = Braspag::Cryptography.new c
-    cr.encrypt params
+    merchant_id = YAML.load_file("#{RAILS_ROOT}/config/braspag.yml")['merchant_id']
+    @braspag = Braspag::Connection.new merchant_id, RAILS_ENV
+    @crypt = Braspag::Cryptography.new(@braspag).encrypt params
   end
 end

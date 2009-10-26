@@ -4,6 +4,7 @@ require 'rubygems'
 require 'braspag/rails'
 require 'spec'
 require 'ruby-debug'
+require 'braspag'
 
 require 'rspec_hpricot_matchers'
 Spec::Runner.configure do |config|
@@ -36,3 +37,14 @@ def output_buffer
   @_out_buf
 end
 def protect_against_forgery?; end
+
+class ApplicationController
+  def params
+    "params"
+  end
+end
+
+require File.join(File.dirname(__FILE__), '..', 'app', 'controllers', 'braspag_controller')
+
+RAILS_ENV = "test"
+RAILS_ROOT = File.join(File.dirname(__FILE__))
