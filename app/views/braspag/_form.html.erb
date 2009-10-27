@@ -1,4 +1,5 @@
-<% form_remote_tag braspag_path do %>
+<div id="braspag_form" >
+<% form_remote_tag :url => braspag_path do %>
   <%= label_tag 'Numero do Pedido' %>
   <%= text_field_tag 'VENDAID' %>
 
@@ -22,28 +23,29 @@
   <br />
   <%= label_tag 'Cartão de Crédito' %>
   <p>
-    <%= radio_button_tag :pagamento, "01" %>Visa
+    <%= radio_button_tag :CODPAGAMENTO, "01" %>Visa
   </p>
   <p>
-    <%= radio_button_tag :pagamento, "02" %>American Express
+    <%= radio_button_tag :CODPAGAMENTO, "02" %>American Express
   </p>
   <p>
-    <%= radio_button_tag :pagamento, "03" %>Master card
+    <%= radio_button_tag :CODPAGAMENTO, "03" %>Master card
   </p>
 
   <br />
   <%= label_tag 'Cartão de Débito' %>
   <p>
-    <%= radio_button_tag :pagamento, "04" %>Visa
+    <%= radio_button_tag :CODPAGAMENTO, "04" %>Visa
   </p>
   <p>
-    <%= radio_button_tag :pagamento, "05" %>Bradesco
+    <%= radio_button_tag :CODPAGAMENTO, "05" %>Bradesco
   </p>
   <p>
-    <%= radio_button_tag :pagamento, "06" %>Itau
+    <%= radio_button_tag :CODPAGAMENTO, "06" %>Itau
   </p>
 
 
   <%= submit_tag 'Prosseguir' %>
 <% end %>
+</div>
 

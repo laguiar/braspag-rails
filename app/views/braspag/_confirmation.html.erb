@@ -1,4 +1,4 @@
-<% form_tag "#{@braspag.base_url}/pagador/index.asp" do %>
+<% form_tag "#{@braspag.base_url}/pagador/passthru.asp" do %>
  <%= hidden_field_tag 'Id_Loja', @braspag.merchant_id %>
  <%= hidden_field_tag 'crypt', @crypt %>
 
