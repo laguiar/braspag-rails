@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe "_confirmation.erb" do
+describe "_confirmation.html.erb" do
 
   context "on rendering a form" do
     before :all do
@@ -23,12 +23,12 @@ describe "_confirmation.erb" do
     end
 
     it "should target https://homologacao.pagador.com.br/pagador/index.asp on test environment" do
-      @form.should have_tag("form[@action='#{@braspag.base_url}/pagador/index.asp']")
+      @form.should have_tag("form[@action='#{@braspag.base_url}/pagador/passthru.asp']")
     end
 
     it "should target https://www.pagador.com.br/pagador/index.asp on production environment" do
       @braspag = Braspag::Connection.new @store_id, "production"
-      form_from_partial("confirmation").should have_tag("form[@action='#{@braspag.base_url}/pagador/index.asp']")
+      form_from_partial("confirmation").should have_tag("form[@action='#{@braspag.base_url}/pagador/passthru.asp']")
     end
   end
 end

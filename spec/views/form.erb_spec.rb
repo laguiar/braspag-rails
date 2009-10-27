@@ -4,7 +4,7 @@ def braspag_path
   "/braspag/encrypt"
 end
 
-describe "_form.erb" do
+describe "_form.html.erb" do
   context "on rendering a form" do
     before :all do
       @form = form_from_partial("form")

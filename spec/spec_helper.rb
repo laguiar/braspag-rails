@@ -12,7 +12,7 @@ Spec::Runner.configure do |config|
 end
 
 def form_from_partial(name)
-  file = File.expand_path(File.dirname(__FILE__) + "/../app/views/braspag/_#{name}.erb")
+  file = File.expand_path(File.dirname(__FILE__) + "/../app/views/braspag/_#{name}.html.erb")
   Tilt::ERBTemplate.new(file).render(self) do
     "<input name='custom'>"
   end

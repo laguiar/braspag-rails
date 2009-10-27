@@ -12,7 +12,7 @@ describe BraspagController do
 
   it "deve setar a criptografia dos dados recebidos como @crypt" do
     Braspag::Cryptography.stub!(:new).with(instance_of(Braspag::Connection)).and_return(crypto = mock(Object))
-    crypto.stub!(:encrypt).with(subject.params).and_return(message = "jr532jk23f34")
+    crypto.stub!(:encrypt).with(anything).and_return(message = "jr532jk23f34")
     subject.encrypt
     subject.send(:eval, "@crypt").should eql(message)
   end
