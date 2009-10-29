@@ -1,17 +1,17 @@
 <div id="braspag_form" >
 <% form_remote_tag :url => braspag_path do %>
   <%= label_tag 'Numero do Pedido' %>
-  <%= text_field_tag 'VENDAID' %>
+  <%= text_field_tag 'VENDAID', "456" %> <font color=red>(*)</font>
 
   <br />
 
   <%= label_tag 'Valor Total' %>
-  <%= text_field_tag 'VALOR' %>
+  <%= text_field_tag 'VALOR', "100" %> <font color=red>(*)</font>
 
   <br />
 
   <%= label_tag 'Nome do Comprador' %>
-  <%= text_field_tag 'NOME' %>
+  <%= text_field_tag 'NOME' %> <font color=red>(*)</font>
 
   <br />
 
@@ -19,7 +19,7 @@
 
   <br />
 
-  <%= label_tag 'Forma de Pagamento' %>
+  <%= label_tag 'Forma de Pagamento' %> <font color=red>(*)</font>
   <br />
   <%= label_tag 'Cartão de Crédito' %>
   <p>
@@ -44,7 +44,8 @@
     <%= radio_button_tag :CODPAGAMENTO, "06" %>Itau
   </p>
 
-
+  <font color=red>Campos de preenchimento obrigatórios!</font>
+  <br /><br />
   <%= submit_tag 'Prosseguir' %>
 <% end %>
 </div>
