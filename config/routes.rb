@@ -1,3 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
   map.braspag 'braspag', :controller => :braspag, :action => :encrypt
+  map.buy 'braspag/buy', :controller => :braspag, :action => :buy
 end
