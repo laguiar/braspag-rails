@@ -1,5 +1,5 @@
 <div id="braspag_form" >
-<% form_remote_tag :url => braspag_path do %>
+<% form_remote_tag :url => buy_path do %>
   <%= label_tag 'Numero do Pedido' %>
   <%= text_field_tag 'VENDAID', "456" %> <font color=red>(*)</font>
 
@@ -46,7 +46,7 @@
 
   <font color=red>Campos de preenchimento obrigatórios!</font>
   <br /><br />
-  <%= submit_tag 'Prosseguir' %>
+  <%= submit_tag 'Buy' %>
 <% end %>
 </div>
 
