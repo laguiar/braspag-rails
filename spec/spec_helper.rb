@@ -46,5 +46,6 @@ end
 
 require File.join(File.dirname(__FILE__), '..', 'app', 'controllers', 'braspag_controller')
 
-RAILS_ENV = "test"
+RAILS_ENV = :test
 RAILS_ROOT = File.join(File.dirname(__FILE__))
+MERCHANT_ID = YAML.load_file("#{RAILS_ROOT}/config/braspag.yml")['merchant_id']

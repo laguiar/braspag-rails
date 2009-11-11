@@ -1,9 +1,9 @@
 module Braspag
   class Payment
-    def self.create(fields)
+    def self.create!(params)
       merchant_id = YAML.load_file("#{RAILS_ROOT}/config/braspag.yml")['merchant_id']
-      @braspag = Braspag::Connection.new merchant_id, RAILS_ENV
-      @result = Braspag::Pagador.new(@braspag).authorize fields
+      connection = Braspag::Connection.new merchant_id, RAILS_ENV
+      Braspag::Buyer.new(connection).buy! params
     end
   end
 end
