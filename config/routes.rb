@@ -1,3 +1,3 @@
 ActionController::Routing::Routes.draw do |map|
-  map.encrypt 'braspag/encrypt', :controller => :braspag, :action => :encrypt
+  map.braspag 'braspag', :controller => :braspag, :action => :encrypt
 end

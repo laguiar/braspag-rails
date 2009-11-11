@@ -1,3 +1,5 @@
+require 'braspag/payment'
+
 module Braspag
   module Rails
     module FormHelper
