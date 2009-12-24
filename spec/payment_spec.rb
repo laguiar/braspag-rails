@@ -17,5 +17,14 @@ describe Braspag::Payment do
       buyer.should_receive(:buy!).with(params)
       Braspag::Payment.create! params
     end
+
+    it "should accept a merchant_id as a parameter" do
+      merchant_id = "hj234ibt34j34kgj34"
+      Braspag::Buyer.should_receive(:new) do |connection|
+        connection.merchant_id.should eql(merchant_id)
+        mock(Braspag::Buyer, :buy! => false)
+      end
+      Braspag::Payment.create! :merchant_id => merchant_id
+    end
   end
 end
